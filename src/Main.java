@@ -1,18 +1,18 @@
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.UnknownHostException;
-import java.sql.SQLOutput;
 
 public class Main {
-    public static void main(String[] args) throws UnknownHostException {
+    public static void main(String[] args) throws IOException {
 
-        throw Exception{
-            int portnumber = 6969;
+
+            int portnumber = 8880;
             if (args.length >= 1){
                 portnumber = Integer.parseInt(args[0]);
-        }
-
+            }
+            try{
             MulticastSocket serverMulticastSocket = new MulticastSocket(portnumber);
 
             InetAddress group = InetAddress.getByName("222.4.5.6");
@@ -29,6 +29,8 @@ public class Main {
                 System.out.println("Message recived from client = " + msg);
             }
             serverMulticastSocket.close();
-        }
+        }catch (IOException ie){
+                ie.printStackTrace();
+            }
     }
 }
